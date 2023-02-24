@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Payroll Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">  
+</head>
+
+<body>
+    <header class="header-content header">
+        <div class="logo-content" >
+            <img src="../assets/images/logo.png" alt="logo">
+            <div>
+                <span class="emp-text">EMPLOYEE</span><br>
+                <span class="emp-text emp-payroll">PAYROLL</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="form-content">
+        <form class="form" [formGroup]="employeeForm" (ngSubmit)="submitForm()">
+            <div class="form-head">
+                Employee Payroll form
+            </div>
+            <div class="row-content">
+                <label class="label text" for="name">Name</label>
+                <input class="input" type="text" id="name" placeholder="Your name.." formControlName="name">
+            </div>
+
+            <div class="row-content">
+                <label for="profile" class="label text" for="profile">Profile Image</label>
+                <div class="profile-radio-content">
+                    <label class="profile-label">
+                        <input type="radio" id="profile1" formControlName="profilePic"
+                            value="../assets/profile-images/Ellipse -3.png">
+                        <img class="profile" id="image1" src="../assets/profile-images/Ellipse -3.png">
+                    </label>
+                    <label class="profile-label">
+                        <input type="radio" id="profile2" nformControlName="profilePic" value="../assets/profile-images/Ellipse 1.png">
+                        <img class="profile" id="image2" src="../assets/profile-images/Ellipse 1.png">
+                    </label>
+                    <label class="profile-label">
+                        <input type="radio" id="profile3" formControlName="profilePic"
+                            value="../assets/profile-images/Ellipse -8.png">
+                        <img class="profile" id="image3" src="../assets/profile-images/Ellipse -8.png">
+                    </label>
+                    <label class="profile-label">
+                        <input type="radio" id="profile4" formControlName="profilePic"
+                            value="../assets/profile-images/Ellipse -7.png">
+                        <img class="profile" id="image4" src="../assets/profile-images/Ellipse -7.png">
+                    </label>
+                </div>
+            </div>
+
+            <div class="row-content">
+                <label class="label text" for="gender">Gender</label>
+                <div>
+                    <input type="radio" id="male" formControlName="gender" value="male">
+                    <label class="text" for="male">Male</label>
+                    <input type="radio" id="female" formControlName="gender" value="female">
+                    <label class="text" for="female">Female</label>
+                </div>
+            </div>
+            <div class="row-content">
+                <label class="label text" for="department">Department</label>
+                <div *ngFor="let department of departments">
+                    <input type="checkbox" [id]="department.id" [value]="department.value"
+                    (change)="onDepartmentChange($event)" [checked]="department.checked">
+                    <label class="text">{{department.name}}</label>
+                </div>
+            </div>
+            <div class="row-content">
+                <label class="label text" for="salary">Salary</label>
+                <input class="input" type="range" id="salary" formControlName="salary" value="salary" (change)="updateSetting($event)" 
+                min="300000" max="500000" step="1000"  >
+                    <p class="salary-output" for="salary" >{{salary}}</p>
+            </div>
+
+            <div class="row-content">
+                <label class="label text" for="startDate">Start Date</label>
+                <div>
+                    <input type="date" id="startDate" formControlName="startDate">
+                </div>
+            </div>
+
+            <div class="row-content">
+                <label class="label text" for="notes">Notes</label>
+                <textarea id="notes" class="input" formControlName="notes" placeholder="" style="height: 100px;"></textarea>
+            </div>
+            <div class="buttonParent">
+                <a href="" class="resetButton button cancelButton">Cancel</a>
+                <div class="submit-reset">
+                    <button type="submit" class="button submitButton" id="submitButton">Submit</button>
+                    <input type="reset" class="resetButton button">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
