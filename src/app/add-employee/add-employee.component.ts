@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Employee } from '../employee';
+import { Employee } from '../Model/employee';
 import { HttpService } from '../Service/http.service';
 import { ActivatedRoute, Router } from '@angular/router';
 

@@ -16,7 +16,7 @@ export class HttpService {
   }
 
   getEmployee(id: number): Observable<any> {
-    return this.http.get(this.baseUrl + "/getall/${id}");
+    return this.http.get(this.baseUrl + `/get/${id}`);
   }
 
   addEmployeeData(obj: any): Observable<any> {
@@ -24,10 +24,10 @@ export class HttpService {
   }
 
   deleteEmployeeData(id: number): Observable<any> {
-    return this.http.delete(this.baseUrl + "/delete/${id}");
+    return this.http.delete(this.baseUrl + `/delete/${id}`);
   }
 
   updateEmployeeData(id: number, obj: any): Observable<any> {
-    return this.http.delete(this.baseUrl + "/update/${id}", obj);
+    return this.http.put(this.baseUrl + `/update/${id}`, obj);
   }
 }

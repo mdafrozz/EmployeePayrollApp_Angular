@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../employee';
+import { Employee } from '../Model/employee';
 import { HttpService } from '../Service/http.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -13,7 +14,7 @@ export class HomePageComponent implements OnInit {
   employeeList: Employee[] = []
 
   
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private router: Router) { }
 
   ngOnInit(): void {
     this.httpService.getEmployeeData().subscribe(response => {
@@ -24,6 +25,7 @@ export class HomePageComponent implements OnInit {
   }
 
   deleteEmployee(id: number){
+    console.log(id)
     this.httpService.deleteEmployeeData(id)
     .subscribe(
       data => {
@@ -32,11 +34,7 @@ export class HomePageComponent implements OnInit {
   }
 
   updateEmployee(id: number){
-    this.httpService.updateEmployeeData(id)
-    .subscribe(
-      data => {
-        window.location.reload();
-      })
+    this.router.navigate(['update', id]);
   }
 
 }
